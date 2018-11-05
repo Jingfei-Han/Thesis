@@ -1,0 +1,79 @@
+\documentclass[master,openright,oneside,color]{buaathesis}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[ruled]{algorithm2e} % For algorithms
+\usepackage{epstopdf}
+
+
+\renewcommand{\algorithmcfname}{算法}
+\makeatletter
+\renewcommand{\@algocf@capt@plain}{above}% formerly {bottom}
+\makeatother
+\SetKwInput{KwData}{输入}
+\SetKwInput{KwResult}{输出}
+\setmainfont{Times New Roman}
+
+
+\begin{document}
+
+% 用户信息
+\include{data/info}
+
+% 中英封面、提名页、授权书
+\maketitle
+% 前言页眉页脚样式
+\pagestyle{frontmatter}
+% 摘要
+%\begin{cabstract}
+%~\
+%
+%随着深度学习技术的发展，出现了丰富多样的基于神经网络的自然语言模型，这些神经网络模型一般都是通过学习大规模语料库来调整自身的参数分布，以提高模型在相关任务上的性能和精度。然而，对于目前的一些较大规模应用而言，语言模型的训练过程还显得较为缓慢，效率需要进一步提高。导致计算缓慢的原因是这些模型在训练和测试的时候，通常需要预测整个词表的单词从而选择出最佳的候选单词，该步骤占用了绝大部分计算资源和时间，一般称为大词表问题。为了应对这个挑战，研究人员提出了各种不同类型的方案，如：单词拆分算法、基于抽样的近似算法和层次概率模型等，其中层次概率模型只关注局部概率，可以很大程度降低训练和测试过程中所占用的计算资源，因此获得了广泛的关注。
+%
+%针对大词表问题，为了减少模型的计算时间并提高模型效率，本论文探讨了基于二叉树和基于类别的两种层次概率模型，并设计了相应的改进策略，其主要改进要点包括：1）提出了一种改进的层次模型的编码策略，引入基于树和基于类的并行度更高的损失函数；2）针对层次化模型对于聚类算法的敏感性问题，对基于N-gram、句法信息和语义信息的不同聚类算法对各种层次概率模型产生的影响进行了分析；3）对多种不同的结构化预测算法进行了分析，同时分析了语言模型在排序和打分两个任务中的选择策略。
+%
+%在实验验证环节，本文在语言建模任务上进行了评测，采用~WikiText-2， WikiText-103~和~One Billion Words~数据集作为实验的基准数据。在模型的评价指标方面，本文不仅考虑了传统的困惑度误差，还将文本比较中经常用到的编辑距离（单词错误率）作为一个重要的比较指标。除此之外，还比较了不同模型之间的训练和测试阶段内存占用量，以及相同数据量情况下模型的计算速度和模型的收敛速度等衡量指标。结果表明，与其他概率归一化方法相比，本文提出的层次概率算法具有很好的计算速度提升效果。同时还讨论了两种层次概率模型的适用范围和两者的优缺点。
+%\end{cabstract}
+%
+%\begin{eabstract}
+%~\
+%
+%Recent decades has witnessed great progress and achievements, in the field of natural language processing. Variants of neural networks based architecture have been proposed and successfully applied to the neural language models, neural acoustic models, neural translation model and etc. These neural models can leverage knowledge in texts by learning parameters from massive corpora, and abundant cases are presented over various text tasks, like sentence classification and word vector learning. While they are extremely slow for the real-world challenge, as they try to predict candidates from a large vocabulary, in the process of training and inference. As an alternative to vocabulary truncation and sampling-based approximation methods, we explore historical proposed tree-based and class-based hierarchical softmax methods.
+%
+%In this research, aiming at reducing neural model's computational time as well as making them compatible with modern devices, we introduce a series of efficient approaches and categorise our contributions as: a) Firstly, we reform their structural composition and introduce a compact tree-based loss function for the tree-based hierarchical softmax methods and class-based loss function for the corresponding class-based hierarchical softmax; b) Then, we discuss the impact of several ngram-based, syntactic and semantic clustering algorithms for the vanilla hierarchical softmax as these structural models are sensitive to the hierarchical clustering methods; c) Thirdly, we discuss possible inference algorithms for the hierarchical softmax variants, assuring the model can fetch presumable predictions under different circumstances.
+%
+%Finally, Our experiments were carried out on language modelling tasks with standard benchmarks datasets, i.e., WikiText-2, WikiText-103 and One Billion Words datasets. Except for the traditional perplexity metric, we also extended our comparison over the word error rate, memory footprint and etc. Consist improvement with several intrinsic evaluation criterions, were also achieved over other conventional optimisation methods.
+%\end{eabstract}
+% 目录、插图目录、表格目录
+\tableofcontents
+\listoffigures
+\listoftables
+
+% 正文页码样式
+\mainmatter
+% 正文页眉页脚样式
+\pagestyle{mainmatter}
+
+\include{data/chapter-1-introduction}
+%\include{data/chapter-2-relatedwork}
+%\include{data/chapter-3-tree-models}
+%\include{data/chapter-4-class-models}
+%\include{data/chapter-5-experiment}
+%\include{data/chapter-6-summary}
+
+% 参考文献
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{参考文献}
+\nocite{*}
+\bibliographystyle{GBT7714-2005}%ZJUthesis}
+\bibliography{thesis_reference}
+\cleardoublepage
+
+% 附录
+%\appendix
+
+% 附页标题样式
+\backmatter
+%\include{data/chapter-7-appendix}
+
+\end{document}
